@@ -120,11 +120,161 @@
 // });
 
 //map method
-const arr=[1 ,2,3,4,5];
-const res=arr.map((el)=>{
-    return el*2;
-});
-console.log(res);
+// const arr=[1 ,2,3,4,5];
+// const res=arr.map((el)=>{
+//     return el*2;
+// });
+// console.log(res);
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+//filter method
+// const arr=[1,2,3,4,5,6,7,8,9,10];
+// const res=arr.filter((el)=>{
+//     return el%2==0;
+// });
+// console.log(res);
+
+// const arr1=[12 , 23 , 'v' , 't' , 34 ,'e']
+// const res1 = arr1.filter((el)=>{
+//     return typeof el === 'string';
+// })
+// console.log(res1);
+
+// const arr=[10,false,1.2,-0.7,null,undefined,"hello",true];
+// //[10,1.2,-0.7,"hello",true]
+// const res=arr.filter((el)=>{
+//     return Boolean(el) || typeof el === 'string';
+// });
+// console.log(res);
+
+//String methods
+// const firstName="Kanhaiya";
+// const lastName="Patel";
+// const fullName = `${firstName} ${lastName}`;
+// console.log ("Full name is : ", fullName);
+// console.log(fullName.split(" "));
+// console.log(fullName.toUpperCase());
+
+// const countWords = (str) => {
+//     return str.split(" ").length;
+// }
 
 
+// let marks={
+//     math:90,
+//     physics:85,
+//     chemistry:88
+// }
+// for (let subject in marks){
+//     console.log(subject, ":", marks[subject]);
+// }   
+
+// let students=[
+//     {name:"Arun",age:19,grade:8.5},
+//     {name:"Barun",age:14,grade:8.7},
+//     {name:"Mike",age:13,grade:7}
+// ];
+// // students.forEach((el) => {
+// //     console.log(`${el.name}`,`${el.age}`, `${el.grade}`);
+// // });
+// //students with grade > 8
+// const res=students.filter((students)=> students.grade>8);
+// const names=res.map((students)=> students.name);
+// console.log("Students with grade > 8 :", `${names.join(", ")}`);
+
+
+// ----------------------------------------------------------
+//-----------------------------------------------------------
+// Accessing DOM element
+// const headingElement = document.getElementById('heading');
+// console.log(headingElement);
+
+// Initial changes
+// headingElement.innerHTML = "No heading";
+// headingElement.style.color = 'red';
+// headingElement.style.border = '1px solid black';
+// headingElement.className = "new-class";
+
+// const btnElement = document.getElementById('btn');
+
+// // Event Listener
+// btnElement.addEventListener('click', () => {
+//     headingElement.innerHTML = "Heading changed";
+//     headingElement.style.color = 'blue';
+//     headingElement.style.border = '2px solid green';
+// });
+
+
+//  let count = 0;
+
+//     document.getElementById("plus").onclick = function () {
+//       count++;
+//       document.getElementById("count").innerText = count;
+//     };
+
+//     document.getElementById("minus").onclick = function () {
+//       count--;
+//       document.getElementById("count").innerText = count;
+//     };
+
+
+
+//simple quiz app
+ const quiz = [
+    {
+      q: "What is the capital of Nepal?",
+      options: ["Kathmandu", "Delhi", "Dhaka", "Colombo"]
+    },
+    {
+      q: "Which planet is known as the Red Planet?",
+      options: ["Earth", "Mars", "Jupiter", "Venus"]
+    },
+    {
+      q: "Who wrote the Ramayana?",
+      options: ["Valmiki", "Tulsidas", "Vyasa", "Kalidasa"]
+    }
+  ];
+
+  let index = 0;
+
+  const progress = document.getElementById("progress");
+  const question = document.getElementById("question");
+  const options = document.getElementById("options");
+  const nextBtn = document.getElementById("nextBtn");
+  const backBtn = document.getElementById("backBtn");
+
+  load();
+
+
+  
+
+  function load() {
+    progress.textContent = `Question ${index + 1} of ${quiz.length}`;
+    question.textContent = quiz[index].q;
+
+    options.innerHTML = quiz[index].options
+      .map(opt => `
+        <label class="flex items-center gap-2">
+          <input type="radio" name="ans" value="${opt}">
+          ${opt}
+        </label>
+      `).join("");
+
+    backBtn.disabled = index === 0;
+    backBtn.classList.toggle("opacity-50", index === 0);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    if (index < quiz.length - 1) {
+      index++;
+      load();
+    }
+  });
+
+  backBtn.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      load();
+    }
+  });
 
