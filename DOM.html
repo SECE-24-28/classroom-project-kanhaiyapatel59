@@ -6,13 +6,147 @@
     <title>DOM Manipulation</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <div class="container">
-        <h1 id="heading">Hello World</h1>
+  <style>
+    /* When radio is checked, apply color to the parent label */
+    input[type="radio"]:checked + span {
+      background-color: #16a34a; /* green-600 */
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+
+  <div class="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-md">
+    <h1 class="text-2xl font-bold mb-4 text-center">Simple Quiz</h1>
+
+    <!-- Question Count -->
+    <p id="question-count" class="text-gray-600 mb-3 text-sm"></p>
+
+    <!-- Question -->
+    <h2 id="question" class="text-lg font-semibold mb-4"></h2>
+
+    <!-- Options -->
+    <div id="options" class="space-y-3"></div>
+
+    <!-- Buttons -->
+    <div class="flex justify-between mt-6">
+      <button id="backBtn" class="px-4 py-2 bg-gray-300 rounded-lg" onclick="goBack()" disabled>
+        Back
+      </button>
+      <button id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg" onclick="nextQuestion()">
+        Next
+      </button>
     </div>
 
-    <button id="btn">Click Me</button>
+    <!-- Result -->
+    <p id="result" class="text-center text-xl font-semibold text-green-600 mt-4 hidden"></p>
+  </div>
 
-    <script src="script.js"></script>
+  <script>
+    const quiz = [
+      {
+        question: "What is the capital of Nepal?",
+        options: ["Pokhara", "Kathmandu", "Lalitpur", "Biratnagar"],
+        answer: 1
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Jupiter", "Mars", "Venus"],
+        answer: 2
+      },
+      {
+        question: "HTML stands for?",
+        options: [
+          "Hyper Trainer Marking Language",
+          "Hyper Text Markup Language",
+          "High Text Marking Level",
+          "None"
+        ],
+        answer: 1
+      }
+    ];
+
+    let index = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = quiz[index];
+
+      document.getElementById("question-count").innerText =
+        `Question ${index + 1} of ${quiz.length}`;
+
+      document.getElementById("question").innerText = q.question;
+
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach((opt, i) => {
+        optionsDiv.innerHTML += `
+          <label class="block cursor-pointer">
+            <input type="radio" name="option" value="${i}" class="hidden peer" />
+            <span class="block border p-3 rounded-lg bg-gray-100 peer-checked:bg-green-500 peer-checked:text-white transition hover:bg-blue-100">
+              ${opt}
+            </span>
+          </label>
+        `;
+      });
+
+      document.getElementById("backBtn").disabled = index === 0;
+    }
+
+    function nextQuestion() {
+      const selected = document.querySelector('input[name="option"]:checked');
+
+      if (!selected) {
+        alert("Please select an answer!");
+        return;
+      }
+
+      if (parseInt(selected.value) === quiz[index].answer) score++;
+
+      index++;
+
+      if (index >= quiz.length) {
+        showResult();
+        return;
+      }
+
+      loadQuestion();
+    }
+
+    function goBack() {
+      if (index > 0) {
+        index--;
+        loadQuestion();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("question").classList.add("hidden");
+      document.getElementById("options").classList.add("hidden");
+      document.getElementById("nextBtn").classList.add("hidden");
+      document.getElementById("backBtn").classList.add("hidden");
+
+      const res = document.getElementById("result");
+      res.classList.remove("hidden");
+      res.innerText = `Your Score: ${score} / ${quiz.length}`;
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
+
+
 </body>
 </html>

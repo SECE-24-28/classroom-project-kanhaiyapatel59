@@ -4,20 +4,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+<body class="bg-gradient-to-br from-gray-800 via-slate-400 to-gray-800 flex items-center justify-center min-h-screen">
 
-  <div class="bg-gray-800 p-6 rounded-xl text-white text-center w-60">
-    <h2 class="text-xl mb-4">Counter</h2>
+  <div class="bg-gray-800/70 backdrop-blur p-6  shadow-lg text-white text-center w-72 border border-gray-700">
+    <h1 class="text-5xl font-bold mb-4">Counter</h1>
 
-    <div id="count" class="text-4xl font-bold mb-4">0</div>
+    <div id="count" class="text-5xl font-bold mb-4 text-purple-400">1</div>
 
-    <div class="flex justify-center gap-4">
-      <button id="minus" class="px-4 py-2 bg-red-600 rounded">−</button>
-      <button id="plus" class="px-4 py-2 bg-green-600 rounded">+</button>
+    <div class="flex justify-center gap-6">
+      <button id="minus" class="px-5 py-2 bg-red-600 hover:bg-red-500 transition rounded-xl text-lg font-bold">−</button>
+      <button id="plus" class="px-5 py-2 bg-green-600 hover:bg-green-500 transition rounded-xl text-lg font-bold">+</button>
     </div>
+
+    <div id="detail" class="text-left mt-6 p-4 bg-gray-900/60 rounded-xl text-sm border border-gray-700"></div>
   </div>
 
- <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food-Tasto - Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">Food-Tasto</div>
+            <ul class="flex space-x-6">
+                <li><a href="home.html" class="hover:text-blue-600">Home</a></li>
+                <li><a href="menu.html" class="text-blue-600 font-semibold">Menu</a></li>
+                <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+                <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+            </ul>
+            <a href="login.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Login</a>
+        </div>
+    </nav>
+
+    <!-- Products Grid -->
+    <section class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold mb-8 text-center">Our Menu</h2>
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Products will be loaded here by JS -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

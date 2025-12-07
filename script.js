@@ -185,6 +185,8 @@
 
 // ----------------------------------------------------------
 //-----------------------------------------------------------
+//==================================================
+//DOM Manipulation
 // Accessing DOM element
 // const headingElement = document.getElementById('heading');
 // console.log(headingElement);
@@ -203,78 +205,245 @@
 //     headingElement.style.color = 'blue';
 //     headingElement.style.border = '2px solid green';
 // });
-
-
-//  let count = 0;
-
-//     document.getElementById("plus").onclick = function () {
-//       count++;
-//       document.getElementById("count").innerText = count;
-//     };
-
-//     document.getElementById("minus").onclick = function () {
-//       count--;
-//       document.getElementById("count").innerText = count;
-//     };
-
-
+//------------------------------------------------------------------
+//==================================================================
 
 //simple quiz app
- const quiz = [
-    {
-      q: "What is the capital of Nepal?",
-      options: ["Kathmandu", "Delhi", "Dhaka", "Colombo"]
-    },
-    {
-      q: "Which planet is known as the Red Planet?",
-      options: ["Earth", "Mars", "Jupiter", "Venus"]
-    },
-    {
-      q: "Who wrote the Ramayana?",
-      options: ["Valmiki", "Tulsidas", "Vyasa", "Kalidasa"]
-    }
-  ];
+//  const quiz = [
+//     {
+//       q: "What is the capital of Nepal?",
+//       options: ["Kathmandu", "Delhi", "Dhaka", "Colombo"]
+//     },
+//     {
+//       q: "Which planet is known as the Red Planet?",
+//       options: ["Earth", "Mars", "Jupiter", "Venus"]
+//     },
+//     {
+//       q: "Who wrote the Ramayana?",
+//       options: ["Valmiki", "Tulsidas", "Vyasa", "Kalidasa"]
+//     }
+//   ];
 
-  let index = 0;
+//   let index = 0;
 
-  const progress = document.getElementById("progress");
-  const question = document.getElementById("question");
-  const options = document.getElementById("options");
-  const nextBtn = document.getElementById("nextBtn");
-  const backBtn = document.getElementById("backBtn");
+//   const progress = document.getElementById("progress");
+//   const question = document.getElementById("question");
+//   const options = document.getElementById("options");
+//   const nextBtn = document.getElementById("nextBtn");
+//   const backBtn = document.getElementById("backBtn");
 
-  load();
+//   load();
 
 
   
 
-  function load() {
-    progress.textContent = `Question ${index + 1} of ${quiz.length}`;
-    question.textContent = quiz[index].q;
+//   function load() {
+//     progress.textContent = `Question ${index + 1} of ${quiz.length}`;
+//     question.textContent = quiz[index].q;
 
-    options.innerHTML = quiz[index].options
-      .map(opt => `
-        <label class="flex items-center gap-2">
-          <input type="radio" name="ans" value="${opt}">
-          ${opt}
-        </label>
-      `).join("");
+//     options.innerHTML = quiz[index].options
+//       .map(opt => `
+//         <label class="flex items-center gap-2">
+//           <input type="radio" name="ans" value="${opt}">
+//           ${opt}
+//         </label>
+//       `).join("");
 
-    backBtn.disabled = index === 0;
-    backBtn.classList.toggle("opacity-50", index === 0);
+//     backBtn.disabled = index === 0;
+//     backBtn.classList.toggle("opacity-50", index === 0);
+//   }
+
+//   nextBtn.addEventListener("click", () => {
+//     if (index < quiz.length - 1) {
+//       index++;
+//       load();
+//     }
+//   });
+
+//   backBtn.addEventListener("click", () => {
+//     if (index > 0) {
+//       index--;
+//       load();
+//     }
+//   });
+//------------------------------------------------------------------
+//==================================================================
+
+
+// const arr=[10,20,30,40,50];
+// const[a,b,c]=arr;
+// console.log(a);
+
+
+// const obj = {
+//     name: "Kanhaiya",
+//     age: 20,
+//     weight: 55
+// };
+
+// const {
+//     name,
+//     age,
+//     height = 5.5, // default value
+//     weight: w     // alias name
+// } = obj;
+
+// console.log(w);
+
+
+// import print, {add, NUM} from './math.js';
+// console.log(add(10, 20));
+// console.log("NUM is :", NUM);
+
+// console.log('START')
+// setTimeout(() => {
+//     console.log('INSIDE')
+// },3000)
+// console.log("END");
+
+// let a=10;
+// const p1=new Promise((resolve, reject) =>  {
+//   setTimeout(() => {
+//     if(a%2==0){
+//     resolve("Even")
+//     }
+//     else{
+//       resolve("Odd")
+//     }
+//   },1000)
+// })
+
+
+// p1.then((res) => {
+//   console.log("Result : ", res)
+// }).catch((err) => {
+//   console.log("Error: ",err)
+// })
+
+// console.log(p1)
+
+//=============================================
+// let a = 11;
+// const checkEven = (num) => {
+//     return new Promise((resolve, reject) => {
+//         if (num % 2 === 0) {
+//             resolve("even");
+//         } else {
+//             reject("odd");
+//         }
+//     });
+// };
+// const checkLessThan10 = (num) => {
+//     return new Promise((resolve, reject) => {
+//         if (num < 10) {
+//             resolve("less than 10");
+//         } else {
+//             reject("greater than 10");
+//         }
+//     });
+// };
+// checkEven(a)
+//     .then((res) => {
+//         console.log("result:", res);
+//         return checkLessThan10(a);
+//     })
+//     .then((res) => {
+//         console.log("result:", res);
+//     })
+//     .catch((err) => {
+//         console.log("error:", err);
+//     });
+
+
+// //async / await
+// const checkCondition = async() => {
+//   let a=10;
+//   console.log("Starting........")
+//   try{
+//   const res = await checkEven(a)
+//   console.log("Result : ", res);
+//   const res2 = await checkLessThan10(a)
+//   console.log("Result2 : ", res2);
+//   } catch(err){
+//     console.log("Error : ", err);
+//   }
+// }
+
+// checkCondition();
+
+//==========================================================
+//==========================================================
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then(res => {
+//     console.log(res);
+//     return res.json();
+//   }).then(json => {
+//     console.log(json);
+//   }).catch(err => {
+//     console.log("Error:", err);
+//   })
+
+//   const fetchData = async() => {
+//     try{
+//       const res = await fetch('https://jsonplaceholder.typecode.com/posts/1')
+//       const data = await res.join()
+//       console.log(json)
+//     }
+//     catch(err){
+//       console.log("Error:", err);
+//     }
+//   }
+//   fetchData();
+
+
+//==========================================================
+//==========================================================
+
+// Fetch user data dynamically based on counter
+const fetchData = async (id) => {
+  const detailDiv = document.getElementById("detail");
+  detailDiv.innerHTML = `<div class="text-center animate-pulse text-gray-300">Loading...</div>`;
+
+  try {
+    // Correct API endpoint for user info
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    if (!res.ok) throw new Error("Invalid ID");
+
+    const user = await res.json();
+
+    detailDiv.innerHTML = `
+      <div><strong class="text-yellow-400">Name:</strong> ${user.name}</div>
+      <div><strong class="text-yellow-400">Email:</strong> ${user.email}</div>
+      <div><strong class="text-yellow-400">Phone:</strong> ${user.phone}</div>
+      <div><strong class="text-yellow-400">Website:</strong> ${user.website}</div>
+      <div><strong class="text-yellow-400">Company:</strong> ${user.company.name}</div>
+      <div><strong class="text-yellow-400">Address:</strong> ${user.address.street}, ${user.address.city}</div>
+    `;
+  } catch (err) {
+    detailDiv.innerHTML = `<div class="text-center text-red-400">⚠ Unable to fetch data</div>`;
   }
+};
 
-  nextBtn.addEventListener("click", () => {
-    if (index < quiz.length - 1) {
-      index++;
-      load();
-    }
-  });
+// Initialize counter
+let count = 1;
+document.getElementById("count").innerText = count;
 
-  backBtn.addEventListener("click", () => {
-    if (index > 0) {
-      index--;
-      load();
-    }
-  });
+// Initial fetch
+fetchData(count);
+
+// Button Events
+document.getElementById("plus").onclick = () => {
+  if (count < 10) count++; // jsonplaceholder has only 10 users
+  document.getElementById("count").innerText = count;
+  fetchData(count);
+};
+
+document.getElementById("minus").onclick = () => {
+  if (count > 1) count--;
+  document.getElementById("count").innerText = count;
+  fetchData(count);
+};
+
+
 
